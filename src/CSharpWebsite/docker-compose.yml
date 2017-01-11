@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  csharpwebsite:
+    image: user/csharpwebsite${TAG}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80"
