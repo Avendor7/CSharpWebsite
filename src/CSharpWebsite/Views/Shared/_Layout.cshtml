@@ -30,17 +30,15 @@
             </div>
             <div class="navbar-collapse collapse" id="mainNav" aria-expanded="false" style="height: 1px;">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a routerLink="/resume" routerLinkActive="active">Resume</a></li>
-                    <li><a routerLink="/ipaddress" routerLinkActive="active">IP Address Manager</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Resume</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="IPAddress">IP Address Manager</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                </ul>
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <div class="footer">
             <p>
                 <span class="pull-left copyright">
