@@ -1,0 +1,77 @@
+@model IEnumerable<CSharpWebsite.Models.IpAddress>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="well">
+    <h2>Static IP Addresses and Machine Info</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hostname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ipv4)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ipv6)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.container)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.vm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.docker)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.operating_system)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hostname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ipv4)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ipv6)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.container)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.vm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.docker)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.operating_system)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+</div>

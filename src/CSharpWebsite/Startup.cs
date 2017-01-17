@@ -40,6 +40,9 @@ namespace CSharpWebsite
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<IpAddressContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LinuxServer")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LinuxServer")));
 
