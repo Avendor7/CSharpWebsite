@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CSharpWebsite.Migrations
+namespace CSharpWebsite.Data.Migrations
 {
-    public partial class IpAddressfix : Migration
+    public partial class FirstPostgres : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

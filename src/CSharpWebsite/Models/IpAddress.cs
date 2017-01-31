@@ -6,10 +6,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CSharpWebsite.Models
 {
+    
     public class IpAddress
     {
-        [Required]
-        public int Id { get; set; }
+        [Key]
+        public int id { get; set; }
 
         [Required]
         [MaxLength(255)]

@@ -241,4 +241,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-/src/CSharpWebsite/appsettings.json
+src/CSharpWebsite/appsettings.json
+appsettings.json
+src/CSharpWebsite/appsettings.json

@@ -8,18 +8,17 @@ using CSharpWebsite.Models;
 namespace CSharpWebsite.Migrations
 {
     [DbContext(typeof(IpAddressContext))]
-    [Migration("20170114095255_IpAddress-fix")]
-    partial class IpAddressfix
+    [Migration("20170129130439_maybefixthings5")]
+    partial class maybefixthings5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.1")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "1.0.1");
 
             modelBuilder.Entity("CSharpWebsite.Models.IpAddress", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("container");
@@ -28,6 +27,10 @@ namespace CSharpWebsite.Migrations
                         .IsRequired();
 
                     b.Property<bool>("docker");
+
+                    b.Property<string>("hostname")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
 
                     b.Property<string>("ipv4")
                         .HasAnnotation("MaxLength", 21);
@@ -40,7 +43,7 @@ namespace CSharpWebsite.Migrations
 
                     b.Property<bool>("vm");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("IpAddresses");
                 });

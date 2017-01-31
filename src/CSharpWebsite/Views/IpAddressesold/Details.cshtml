@@ -1,0 +1,66 @@
+@model CSharpWebsite.Models.IpAddress
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>IpAddress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.container)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.container)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.docker)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.docker)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.hostname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.hostname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ipv4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ipv4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ipv6)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ipv6)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.operating_system)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.operating_system)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.vm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.vm)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

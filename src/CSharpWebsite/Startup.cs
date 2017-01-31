@@ -39,12 +39,20 @@ namespace CSharpWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            
             // Add framework services.
-            services.AddDbContext<IpAddressContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("LinuxServer")));
+           // services.AddDbContext<IpAddressContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Postgres")));
+           if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development") {
+                services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Dev")));
+                services.AddDbContext<IpAddressContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Dev")));
+            } else {
+                services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Prod")));
+                services.AddDbContext<IpAddressContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Prod")));
+            }
+            
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("LinuxServer")));
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Postgres")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

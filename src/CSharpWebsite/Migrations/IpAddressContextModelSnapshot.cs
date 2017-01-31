@@ -13,12 +13,11 @@ namespace CSharpWebsite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.1")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "1.0.1");
 
             modelBuilder.Entity("CSharpWebsite.Models.IpAddress", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("container");
@@ -43,7 +42,7 @@ namespace CSharpWebsite.Migrations
 
                     b.Property<bool>("vm");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("IpAddresses");
                 });

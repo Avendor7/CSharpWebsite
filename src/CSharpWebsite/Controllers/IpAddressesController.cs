@@ -32,7 +32,7 @@ namespace CSharpWebsite.Controllers
                 return NotFound();
             }
 
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.Id == id);
+            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
             if (ipAddress == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace CSharpWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
+        public async Task<IActionResult> Create([Bind("id,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace CSharpWebsite.Controllers
                 return NotFound();
             }
 
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.Id == id);
+            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
             if (ipAddress == null)
             {
                 return NotFound();
@@ -84,9 +84,9 @@ namespace CSharpWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
+        public async Task<IActionResult> Edit(int id, [Bind("id,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
         {
-            if (id != ipAddress.Id)
+            if (id != ipAddress.id)
             {
                 return NotFound();
             }
@@ -100,7 +100,7 @@ namespace CSharpWebsite.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!IpAddressExists(ipAddress.Id))
+                    if (!IpAddressExists(ipAddress.id))
                     {
                         return NotFound();
                     }
@@ -122,7 +122,7 @@ namespace CSharpWebsite.Controllers
                 return NotFound();
             }
 
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.Id == id);
+            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
             if (ipAddress == null)
             {
                 return NotFound();
@@ -136,7 +136,7 @@ namespace CSharpWebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.Id == id);
+            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
             _context.IpAddresses.Remove(ipAddress);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -144,7 +144,7 @@ namespace CSharpWebsite.Controllers
 
         private bool IpAddressExists(int id)
         {
-            return _context.IpAddresses.Any(e => e.Id == id);
+            return _context.IpAddresses.Any(e => e.id == id);
         }
     }
 }
