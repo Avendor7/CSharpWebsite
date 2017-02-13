@@ -43,20 +43,27 @@ namespace CSharpWebsite
             
             // Add framework services.
            // services.AddDbContext<IpAddressContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Postgres")));
-           if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development") {
-                services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Dev")));
-                services.AddDbContext<IpAddressContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Dev")));
-            } else {
+           if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production") {
                 services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Prod")));
-                services.AddDbContext<IpAddressContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Prod")));
+               // services.AddDbContext<IpAddressContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Prod")));
+            } else {
+                services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Dev")));
+               // services.AddDbContext<IpAddressContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Postgres-Dev")));
             }
-            
+
 
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Postgres")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
 
             services.AddMvc();
 

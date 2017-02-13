@@ -11,7 +11,8 @@ html {
 
 body {
   background-color: #374755;
-  font-family: Ubuntu, sans-serif; }
+  font-family: Ubuntu, sans-serif;
+  overflow: hidden; }
 
 p {
   font-size: 16px; }
@@ -270,4 +271,12 @@ img.login-logo {
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #2980b9;
     background-color: #2D507F; } }
+
+#editor {
+  margin: 0;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 

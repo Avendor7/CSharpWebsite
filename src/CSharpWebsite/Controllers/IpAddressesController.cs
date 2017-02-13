@@ -5,24 +5,33 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using CSharpWebsite.Data;
 using CSharpWebsite.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CSharpWebsite.Controllers
 {
+    [Authorize]
     public class IpAddressesController : Controller
     {
-        private readonly IpAddressContext _context;
+        private readonly ApplicationDbContext _context;
+        
 
-        public IpAddressesController(IpAddressContext context)
+        public IpAddressesController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
+            
         }
 
         // GET: IpAddresses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.IpAddresses.ToListAsync());
+            return View(await _context.IpAddress.ToListAsync());
+            
         }
+        
 
         // GET: IpAddresses/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -32,7 +41,7 @@ namespace CSharpWebsite.Controllers
                 return NotFound();
             }
 
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
+            var ipAddress = await _context.IpAddress.SingleOrDefaultAsync(m => m.id == id);
             if (ipAddress == null)
             {
                 return NotFound();
@@ -52,7 +61,7 @@ namespace CSharpWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
+        public async Task<IActionResult> Create([Bind("id,ApplicationUserID,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +80,7 @@ namespace CSharpWebsite.Controllers
                 return NotFound();
             }
 
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
+            var ipAddress = await _context.IpAddress.SingleOrDefaultAsync(m => m.id == id);
             if (ipAddress == null)
             {
                 return NotFound();
@@ -84,7 +93,7 @@ namespace CSharpWebsite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
+        public async Task<IActionResult> Edit(int id, [Bind("id,ApplicationUserID,container,description,docker,hostname,ipv4,ipv6,operating_system,vm")] IpAddress ipAddress)
         {
             if (id != ipAddress.id)
             {
@@ -122,7 +131,7 @@ namespace CSharpWebsite.Controllers
                 return NotFound();
             }
 
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
+            var ipAddress = await _context.IpAddress.SingleOrDefaultAsync(m => m.id == id);
             if (ipAddress == null)
             {
                 return NotFound();
@@ -136,15 +145,15 @@ namespace CSharpWebsite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var ipAddress = await _context.IpAddresses.SingleOrDefaultAsync(m => m.id == id);
-            _context.IpAddresses.Remove(ipAddress);
+            var ipAddress = await _context.IpAddress.SingleOrDefaultAsync(m => m.id == id);
+            _context.IpAddress.Remove(ipAddress);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool IpAddressExists(int id)
         {
-            return _context.IpAddresses.Any(e => e.id == id);
+            return _context.IpAddress.Any(e => e.id == id);
         }
     }
 }

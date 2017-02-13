@@ -10,10 +10,16 @@ namespace CSharpWebsite.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<IpAddress> IpAddress { get; set; }
+        public DbSet<Snippets> Snippets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -22,5 +28,7 @@ namespace CSharpWebsite.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        
     }
 }

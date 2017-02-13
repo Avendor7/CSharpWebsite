@@ -32,6 +32,7 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Resume</a></li>
                     <li><a asp-area="" asp-controller="IpAddresses" asp-action="Index">IP Address Manager</a></li>
+                    <li><a asp-area="" asp-controller="Snippets" asp-action="Index">Code Snippets</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -56,6 +57,7 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
@@ -67,6 +69,8 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
+        <script src="~/js/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

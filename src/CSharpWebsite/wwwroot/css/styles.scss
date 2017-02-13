@@ -30,6 +30,7 @@ html {
 body {
 	background-color: $color_limed_spruce_approx;
 	font-family: $font_0, $font_1;
+    overflow: hidden;
 }
 p {
 	font-size: 16px;
@@ -336,3 +337,15 @@ $boxShadow: rgba(0, 0, 0, 0.3);
     background-color: #2D507F;
   }
 }
+
+
+
+ #editor {
+        margin: 0;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+ 
