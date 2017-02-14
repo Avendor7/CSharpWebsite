@@ -2,5 +2,9 @@
   {
     "outputFile": "wwwroot/css/styles.css",
     "inputFile": "wwwroot/css/styles.scss"
+  },
+  {
+    "outputFile": "wwwroot/js/aceEditor.es5.js",
+    "inputFile": "wwwroot/js/aceEditor.js"
   }
 ]

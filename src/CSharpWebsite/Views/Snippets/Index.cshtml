@@ -51,3 +51,12 @@
         <a asp-action="Create" class="btn btn-primary">Create New</a>
     </div>
 </div>
+<environment names="Development">
+    <script src="~/js/create.js" asp-append-version="true"></script>
+    <script src="~/js/aceEditor.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    
+    <script src="~/js/create.min.js" asp-append-version="true"></script>
+    <script src="~/js/aceEditor.min.js" asp-append-version="true"></script>
+</environment>

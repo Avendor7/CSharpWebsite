@@ -1,4 +1,7 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="js/aceeditor.es5.js" />
+/// <reference path="js/aceeditor.js" />
+/// <reference path="js/create.min.js" />
 /// <reference path="js/site.js" />
 /// <reference path="js/src-min-noconflict/ace.js" />
 /// <reference path="js/src-min-noconflict/ext-beautify.js" />
