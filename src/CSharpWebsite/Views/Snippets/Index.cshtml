@@ -4,11 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <div class="well">
     <h2>Code Snippets</h2>
     <div class="table-responsive">
@@ -16,13 +11,13 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.title)
+                        Title
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.language)
+                        Language
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.description)
+                        Description
                     </th>
                     <th></th>
                 </tr>
