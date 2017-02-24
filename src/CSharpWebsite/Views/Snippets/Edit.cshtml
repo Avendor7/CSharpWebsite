@@ -9,6 +9,7 @@
     <form asp-action="Edit">
         <div class="form-horizontal">
             <h2>@Model.title</h2>
+            <h3>@Model.language</h3>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
@@ -54,10 +55,6 @@
     </div>
 </div>
 
-<script>
-    var lang = document.getElementById('languageInput').value;
-    document.getElementById('languageList').value = lang;
-</script>
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

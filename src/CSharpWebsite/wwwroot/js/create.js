@@ -76,3 +76,5 @@ if (document.getElementById('languageList')) {
 
     });
 }
+
+document.getElementById('languageList').selectedIndex = languages.indexOf(document.getElementById('languageInput').value);
