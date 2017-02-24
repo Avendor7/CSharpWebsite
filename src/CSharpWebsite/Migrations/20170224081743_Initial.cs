@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace CSharpWebsite.Migrations
 {
-    public partial class addipaddress : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,6 +32,22 @@ namespace CSharpWebsite.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Snippets",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    code = table.Column<string>(nullable: false),
+                    description = table.Column<string>(nullable: false),
+                    language = table.Column<string>(nullable: false),
+                    title = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Snippets", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,8 +83,8 @@ namespace CSharpWebsite.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    ApplicationUserID = table.Column<string>(nullable: true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    ApplicationUserId = table.Column<string>(nullable: true),
                     container = table.Column<bool>(nullable: false),
                     description = table.Column<string>(nullable: false),
                     docker = table.Column<bool>(nullable: false),
@@ -81,8 +98,8 @@ namespace CSharpWebsite.Migrations
                 {
                     table.PrimaryKey("PK_IpAddress", x => x.id);
                     table.ForeignKey(
-                        name: "FK_IpAddress_AspNetUsers_ApplicationUserID",
-                        column: x => x.ApplicationUserID,
+                        name: "FK_IpAddress_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -93,7 +110,7 @@ namespace CSharpWebsite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
@@ -134,7 +151,7 @@ namespace CSharpWebsite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     RoleId = table.Column<string>(nullable: false)
@@ -186,14 +203,15 @@ namespace CSharpWebsite.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_IpAddress_ApplicationUserID",
+                name: "IX_IpAddress_ApplicationUserId",
                 table: "IpAddress",
-                column: "ApplicationUserID");
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
-                column: "NormalizedName");
+                column: "NormalizedName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -214,17 +232,15 @@ namespace CSharpWebsite.Migrations
                 name: "IX_AspNetUserRoles_RoleId",
                 table: "AspNetUserRoles",
                 column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "IpAddress");
+
+            migrationBuilder.DropTable(
+                name: "Snippets");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
