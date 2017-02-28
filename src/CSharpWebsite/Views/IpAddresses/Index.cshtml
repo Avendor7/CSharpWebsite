@@ -10,28 +10,28 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.hostname)
+                        Hostname
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ipv4)
+                        IPv4
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ipv6)
+                        IPv6
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.container)
+                        Container
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.vm)
+                        Virtual Machine
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.docker)
+                        Docker
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.operating_system)
+                        Operating System
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.description)
+                        Description
                     </th>
                     <th></th>
                 </tr>
@@ -43,7 +43,7 @@
                             @Html.DisplayFor(modelItem => item.hostname)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ipv4)
+                            <a href='http://@Html.DisplayFor(modelItem => item.ipv4)'>@Html.DisplayFor(modelItem => item.ipv4)</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ipv6)
